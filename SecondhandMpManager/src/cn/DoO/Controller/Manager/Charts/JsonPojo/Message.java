@@ -18,13 +18,21 @@ public class Message {
 	public int missPhoneCount;// 脏机拦截数量
 	public int infoCount;// 在售商品数量
 	public int dealCount;// 交易订单总数
-	public int dealMoneyCount;// 交易总额
+	public double dealMoneyCount;// 交易总额
 
 	public List<Map<String, Object>> phoneBrandData;// charts数组数据 : 手机各品牌数量
 	public List<Map<String, Object>> phoneSalesRank;// charts数组数据 : 手机销售前三
 
 	public String getMsg() {
 		return msg;
+	}
+
+	public double getDealMoneyCount() {
+		return dealMoneyCount;
+	}
+
+	public void setDealMoneyCount(double dealMoneyCount) {
+		this.dealMoneyCount = dealMoneyCount;
 	}
 
 	public void setMsg(String msg) {
@@ -71,13 +79,6 @@ public class Message {
 		this.dealCount = dealCount;
 	}
 
-	public int getDealMoneyCount() {
-		return dealMoneyCount;
-	}
-
-	public void setDealMoneyCount(int dealMoneyCount) {
-		this.dealMoneyCount = dealMoneyCount;
-	}
 
 	public List<Map<String, Object>> getPhoneBrandData() {
 		return phoneBrandData;

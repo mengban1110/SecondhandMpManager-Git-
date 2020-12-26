@@ -19,31 +19,35 @@ public interface ChartsService {
 	 * @throws SQLException 
 	 * @throws ClassNotFoundException 
 	 */
-	public List<Map<String, Object>> queryAccountCount() throws ClassNotFoundException, SQLException;
+	public Map<String, Object> queryAccountCount() throws ClassNotFoundException, SQLException;
 
 	/**
 	 * 脏机拦截数量
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
-	public void queryMissPhoneCount();
+	public Map<String, Object> queryMissPhoneCount() throws ClassNotFoundException, SQLException;
 
 	/**
 	 * 在售商品数量
 	 * @throws SQLException 
 	 * @throws ClassNotFoundException 
 	 */
-	public List<Map<String, Object>> queryInfoCount() throws ClassNotFoundException, SQLException;
+	public Map<String, Object> queryInfoCount() throws ClassNotFoundException, SQLException;
 
 	/**
 	 * 交易订单总数
 	 * @throws SQLException 
 	 * @throws ClassNotFoundException 
 	 */
-	public List<Map<String, Object>> queryDealCount() throws ClassNotFoundException, SQLException;
+	public Map<String, Object> queryDealCount() throws ClassNotFoundException, SQLException;
 
 	/**
 	 * 交易总额
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
-	public void queryDealMoneyCount();
+	public Map<String, Object> queryDealMoneyCount() throws ClassNotFoundException, SQLException;
 
 	/**
 	 * charts数组数据 : 手机各品牌数量

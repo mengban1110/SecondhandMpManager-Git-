@@ -27,17 +27,18 @@ public class ChartsServiceImpl implements ChartsService {
 	 * @throws ClassNotFoundException 
 	 */
 	@Override
-	public List<Map<String, Object>> queryAccountCount() throws ClassNotFoundException, SQLException {
-		return dao.executeQueryForList(" SELECT COUNT(*) AS 'accountCount' FROM account ");
+	public Map<String, Object> queryAccountCount() throws ClassNotFoundException, SQLException {
+		return dao.executeQueryForMap(" SELECT COUNT(*) AS 'accountCount' FROM account ");
 	}
 
 	/**
 	 * 脏机拦截数量
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
 	@Override
-	public void queryMissPhoneCount() {
-		// TODO Auto-generated method stub
-
+	public Map<String, Object> queryMissPhoneCount() throws ClassNotFoundException, SQLException {
+		return dao.executeQueryForMap(" SELECT countNum AS 'missPhoneCount' FROM losephonecount ");
 	}
 
 	/**
@@ -46,8 +47,8 @@ public class ChartsServiceImpl implements ChartsService {
 	 * @throws ClassNotFoundException 
 	 */
 	@Override
-	public List<Map<String, Object>> queryInfoCount() throws ClassNotFoundException, SQLException {
-		return dao.executeQueryForList(" SELECT COUNT(*) AS 'infoCount' FROM mpinfo WHERE MpInfo_status=1 ");
+	public Map<String, Object> queryInfoCount() throws ClassNotFoundException, SQLException {
+		return dao.executeQueryForMap(" SELECT COUNT(*) AS 'infoCount' FROM mpinfo WHERE MpInfo_status=1 ");
 	}
 
 	/**
@@ -56,17 +57,18 @@ public class ChartsServiceImpl implements ChartsService {
 	 * @throws ClassNotFoundException 
 	 */
 	@Override
-	public List<Map<String, Object>> queryDealCount() throws ClassNotFoundException, SQLException {
-		return dao.executeQueryForList(" SELECT COUNT(*) AS 'dealCount' FROM buyhistory ");
+	public Map<String, Object> queryDealCount() throws ClassNotFoundException, SQLException {
+		return dao.executeQueryForMap(" SELECT COUNT(*) AS 'dealCount' FROM buyhistory ");
 	}
 
 	/**
 	 * 交易总额
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
 	@Override
-	public void queryDealMoneyCount() {
-		//SELECT SUM(m.MpInfo_price) AS '总和' FROM buyhistory AS b,mpinfo AS m WHERE b.buyhistory_status=m.MpInfo_id AND m.MpInfo_status=2
-
+	public Map<String, Object> queryDealMoneyCount() throws ClassNotFoundException, SQLException {
+		return dao.executeQueryForMap(" SELECT SUM(m.MpInfo_price) AS 'dealMoneyCount' FROM buyhistory AS b,mpinfo AS m WHERE b.buyhistory_mpinfoid=m.MpInfo_id AND m.MpInfo_status=2 ");
 	}
 
 	/**
@@ -86,7 +88,7 @@ public class ChartsServiceImpl implements ChartsService {
 	 */
 	@Override
 	public List<Map<String, Object>> queryPhoneSalesRank() throws ClassNotFoundException, SQLException {
-		return dao.executeQueryForList(" SELECT b.brand_name,COUNT(b.brand_name) FROM mpinfo AS m ,brand AS b WHERE b.brand_id = m.MpInfo_brand GROUP BY b.brand_name ORDER BY COUNT(b.brand_name) DESC LIMIT 3 ");
+		return dao.executeQueryForList(" SELECT b.brand_name AS 'brand',COUNT(b.brand_name) AS 'count' FROM mpinfo AS m ,brand AS b WHERE b.brand_id = m.MpInfo_brand GROUP BY b.brand_name ORDER BY COUNT(b.brand_name) DESC LIMIT 3 ");
 	}
 
 }

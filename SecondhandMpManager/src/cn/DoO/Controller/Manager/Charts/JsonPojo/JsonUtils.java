@@ -77,4 +77,12 @@ public class JsonUtils {
 		out.flush();
 		out.close();
 	}
+	
+	
+	public static int objParseInt(Object obj){
+		String string = String.valueOf(obj);
+		int inta = Integer.valueOf(string);
+		return inta;
+		
+	}
 }

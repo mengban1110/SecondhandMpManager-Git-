@@ -75,36 +75,56 @@ public class ChartsServlet extends HttpServlet {
 	 * @throws ClassNotFoundException 
 	 */
 	private void queryAll(HttpServletRequest request, HttpServletResponse response) throws JsonGenerationException, JsonMappingException, IOException, ClassNotFoundException, SQLException {
-		chartsService.queryAccountCount();//前台注册用户数量
-		System.out.println("注册数量"+chartsService.queryAccountCount());
+		Map<String, Object> accountCount = chartsService.queryAccountCount();//前台注册用户数量
+		System.out.println("注册数量"+accountCount);
 		
 		
-		chartsService.queryMissPhoneCount();//脏机拦截数量
-		//↑↑↑↑↑↑↑↑↑先不写↑↑↑↑↑↑↑↑↑↑
+		Map<String, Object> missPhoneCount = chartsService.queryMissPhoneCount();//脏机拦截数量
+		System.out.println("脏机拦截数量"+missPhoneCount);
 		
-		chartsService.queryInfoCount();//在售商品数量
-		System.out.println("在售商品数量"+chartsService.queryInfoCount());
-		
-		
-		chartsService.queryDealCount();//交易订单总数
-		System.out.println("交易订单总数"+chartsService.queryDealCount());
+		Map<String, Object> infoCount = chartsService.queryInfoCount();//在售商品数量
+		System.out.println("在售商品数量"+infoCount);
 		
 		
-		chartsService.queryDealMoneyCount();//交易总额
+		Map<String, Object> dealCount = chartsService.queryDealCount();//交易订单总数
+		System.out.println("交易订单总数"+dealCount);
 		
 		
-		chartsService.queryPhoneBrandData();//charts数组数据 : 手机各品牌数量
-		System.out.println("手机各品牌数量"+chartsService.queryPhoneBrandData());
+		Map<String, Object> dealMoneyCount = chartsService.queryDealMoneyCount();//交易总额
+		System.out.println("交易总额"+dealMoneyCount);
 		
 		
-		chartsService.queryPhoneSalesRank();//charts数组数据 : 手机销售前三
-		System.out.println("手机销售前三"+chartsService.queryPhoneBrandData());
+		List<Map<String, Object>> phoneBrandData = chartsService.queryPhoneBrandData();//charts数组数据 : 手机各品牌数量
+		System.out.println("手机各品牌数量"+phoneBrandData);
+		
+		
+		List<Map<String, Object>> phoneSalesRank = chartsService.queryPhoneSalesRank();//charts数组数据 : 手机销售前三
+		System.out.println("手机销售前三"+phoneSalesRank);
 		
 		
 		Message message = new Message();
-		//message.set...
+		message.setMsg("获取成功");
+		message.setCode(1);
+		Object accountCountValue = accountCount.get("accountCount");
+		message.setAccountCount(JsonUtils.objParseInt(accountCountValue));
 		
+		Object missPhoneCountValue = missPhoneCount.get("missPhoneCount");
+		message.setMissPhoneCount(JsonUtils.objParseInt(missPhoneCountValue));
+		
+		Object infoCountValue = infoCount.get("infoCount");
+		message.setInfoCount(JsonUtils.objParseInt(infoCountValue));
+		
+		Object dealCountValue = dealCount.get("dealCount");
+		message.setDealCount(JsonUtils.objParseInt(dealCountValue));
+		
+		Object dealMoneyCountValue = dealMoneyCount.get("dealMoneyCount");
+		
+		message.setDealMoneyCount(Double.valueOf(String.valueOf(dealMoneyCountValue)));
+		message.setPhoneBrandData(phoneBrandData);
+		message.setPhoneSalesRank(phoneSalesRank);
 		JsonUtils.writeJson(response, message);
 	}
 
+	
+	
 }
