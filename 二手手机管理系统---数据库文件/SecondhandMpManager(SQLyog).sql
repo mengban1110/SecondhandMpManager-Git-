@@ -2,7 +2,7 @@
 SQLyog 企业版 - MySQL GUI v8.14 
 MySQL - 5.0.22-community-nt : Database - secondhandmpmanager
 *********************************************************************
-*/
+*/
 
 /*!40101 SET NAMES utf8 */;
 
