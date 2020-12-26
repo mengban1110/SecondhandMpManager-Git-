@@ -6,7 +6,6 @@ package cn.DoO.Controller.Manager.Charts;
  * 接口返回值自行修改!!!
  * 
  * @author 梦伴
- * test
  *
  */
 public interface ChartsService {
