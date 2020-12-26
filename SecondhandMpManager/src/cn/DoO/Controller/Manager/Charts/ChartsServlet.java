@@ -71,15 +71,35 @@ public class ChartsServlet extends HttpServlet {
 	 * @throws IOException 
 	 * @throws JsonMappingException 
 	 * @throws JsonGenerationException 
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
-	private void queryAll(HttpServletRequest request, HttpServletResponse response) throws JsonGenerationException, JsonMappingException, IOException {
+	private void queryAll(HttpServletRequest request, HttpServletResponse response) throws JsonGenerationException, JsonMappingException, IOException, ClassNotFoundException, SQLException {
 		chartsService.queryAccountCount();//前台注册用户数量
+		System.out.println("注册数量"+chartsService.queryAccountCount());
+		
+		
 		chartsService.queryMissPhoneCount();//脏机拦截数量
+		//↑↑↑↑↑↑↑↑↑先不写↑↑↑↑↑↑↑↑↑↑
+		
 		chartsService.queryInfoCount();//在售商品数量
+		System.out.println("在售商品数量"+chartsService.queryInfoCount());
+		
+		
 		chartsService.queryDealCount();//交易订单总数
+		System.out.println("交易订单总数"+chartsService.queryDealCount());
+		
+		
 		chartsService.queryDealMoneyCount();//交易总额
+		
+		
 		chartsService.queryPhoneBrandData();//charts数组数据 : 手机各品牌数量
+		System.out.println("手机各品牌数量"+chartsService.queryPhoneBrandData());
+		
+		
 		chartsService.queryPhoneSalesRank();//charts数组数据 : 手机销售前三
+		System.out.println("手机销售前三"+chartsService.queryPhoneBrandData());
+		
 		
 		Message message = new Message();
 		//message.set...

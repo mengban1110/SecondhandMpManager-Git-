@@ -1,5 +1,9 @@
 package cn.DoO.Controller.Manager.Charts;
 
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Charts数据 service接口
  * 
@@ -12,8 +16,10 @@ public interface ChartsService {
 
 	/**
 	 * 前台注册用户数量
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
-	public void queryAccountCount();
+	public List<Map<String, Object>> queryAccountCount() throws ClassNotFoundException, SQLException;
 
 	/**
 	 * 脏机拦截数量
@@ -22,13 +28,17 @@ public interface ChartsService {
 
 	/**
 	 * 在售商品数量
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
-	public void queryInfoCount();
+	public List<Map<String, Object>> queryInfoCount() throws ClassNotFoundException, SQLException;
 
 	/**
 	 * 交易订单总数
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
-	public void queryDealCount();
+	public List<Map<String, Object>> queryDealCount() throws ClassNotFoundException, SQLException;
 
 	/**
 	 * 交易总额
@@ -37,12 +47,16 @@ public interface ChartsService {
 
 	/**
 	 * charts数组数据 : 手机各品牌数量
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
-	public void queryPhoneBrandData();
+	public List<Map<String, Object>> queryPhoneBrandData() throws ClassNotFoundException, SQLException;
 
 	/**
 	 * charts数组数据 : 手机销售前三
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
-	public void queryPhoneSalesRank();
+	public List<Map<String, Object>> queryPhoneSalesRank() throws ClassNotFoundException, SQLException;
 
 }
