@@ -120,8 +120,10 @@ public class ChartsServlet extends HttpServlet {
 		Object dealMoneyCountValue = dealMoneyCount.get("dealMoneyCount");
 		
 		message.setDealMoneyCount(Double.valueOf(String.valueOf(dealMoneyCountValue)));
+		
 		message.setPhoneBrandData(phoneBrandData);
 		message.setPhoneSalesRank(phoneSalesRank);
+		
 		JsonUtils.writeJson(response, message);
 	}
 
