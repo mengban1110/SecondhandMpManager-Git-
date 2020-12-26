@@ -1,0 +1,15 @@
+mpinfo多了一列title列
+title : 商品标题
+商品标题怎么加呢?
+拼接字符串 mpinfo_brand+"-"+mpinfo_version+"-"+...+mpinfo_buytime(只到这里 后面的mime串号,图片不纳入title中)
+
+
+account和manager表添加code列 为了储存验证码
+manager添加了status列 为了激活功能
+manager表status列添加外键->accstatus_id
+
+
+
+
+2020.12.24-04:27更新
+最终版本sql 不再做更改!
