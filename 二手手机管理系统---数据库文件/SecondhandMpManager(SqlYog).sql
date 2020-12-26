@@ -36,7 +36,7 @@ CREATE TABLE `account` (
 
 /*Data for the table `account` */
 
-insert  into `account`(`account_id`,`account_nickname`,`account_username`,`account_password`,`account_email`,`account_address`,`account_status`,`account_code`) values (1,'梦伴','DreamofOriginal','wushang816','2662252561@qq.com','河北唐山诚安友谊天地',1,NULL);
+insert  into `account`(`account_id`,`account_nickname`,`account_username`,`account_password`,`account_email`,`account_address`,`account_status`,`account_code`) values (1,'梦伴','DreamofOriginal','wushang816','2662252561@qq.com','河北唐山诚安友谊天地',1,'TSCZ'),(2,'小明','xiaoming','xiaoming123','1541421241@qq.com','北京昌平北七家镇',1,'GAX9'),(3,'小红','xiaohong','xiaohong123','5155141512@qq.com','河南光明顶友谊路',2,'FASD'),(4,'小李','xiaoli','xiaoli123','5315593451@qq.com','南京南京路夫子庙',1,'RQ9X'),(5,'小黑','xiaohei','xiaohei','1325623242@qq.com','河北唐山路南区福乐园',1,'FSAC'),(6,'小白','xiaobai','xiaobai123','254016841@qq.com','河北保定莲池区河北软件',1,'GSDF'),(7,'小紫','xiaozi','xiaozi','13224242@qq.com','河北廊坊河北工业大学',1,'QQGX'),(8,'小绿','xiaolv','xiaolv','2016841@qq.com','河北保定莲池区河北软件',1,'XOQ1'),(9,'铭起','mingqi','mingqi123','412222@qq.com','河南平顶山建设路',2,'2S1X'),(10,'梦雪','mengxue','mengxue123','19562892@qq.com','山东青岛卫国路22号',1,'Q23P'),(11,'付清','fuqing','fuqing123','mengahos@gmail.com','山东济南济南东站',1,'124A');
 
 /*Table structure for table `accstatus` */
 
@@ -78,7 +78,7 @@ CREATE TABLE `blockword` (
 
 /*Data for the table `blockword` */
 
-insert  into `blockword`(`blockword_id`,`blockword_name`) values (1,'test'),(2,'stop');
+insert  into `blockword`(`blockword_id`,`blockword_name`) values (1,'傻'),(2,'逼'),(3,'癌'),(4,'狗'),(5,'妈'),(6,'垃'),(7,'圾');
 
 /*Table structure for table `brand` */
 
@@ -103,6 +103,7 @@ CREATE TABLE `buyhistory` (
   `buyhistory_mpinfoid` int(11) default NULL,
   `buyhistory_status` int(255) default NULL,
   `buyhistory_belongaccid` int(255) default NULL,
+  `buyhistory_buyTime` varchar(255) default NULL,
   PRIMARY KEY  USING BTREE (`buyhistory_id`),
   KEY `buyhistory_mpinfoid` USING BTREE (`buyhistory_mpinfoid`),
   KEY `buyhistory_belongaccid` USING BTREE (`buyhistory_belongaccid`),
@@ -114,7 +115,7 @@ CREATE TABLE `buyhistory` (
 
 /*Data for the table `buyhistory` */
 
-insert  into `buyhistory`(`buyhistory_id`,`buyhistory_mpinfoid`,`buyhistory_status`,`buyhistory_belongaccid`) values (1,1,4,1);
+insert  into `buyhistory`(`buyhistory_id`,`buyhistory_mpinfoid`,`buyhistory_status`,`buyhistory_belongaccid`,`buyhistory_buyTime`) values (1,1,4,1,'2020年11月10号'),(2,4,1,1,'2020年12月7日'),(3,8,2,5,'2020年10月2日'),(4,17,4,3,'2020年10月9日'),(5,11,4,3,'2020年9月23日');
 
 /*Table structure for table `buystatus` */
 
@@ -186,6 +187,18 @@ CREATE TABLE `losephone` (
 
 insert  into `losephone`(`losephone_id`,`losephone_MIME`) values (1,'355637051875045'),(2,'355637052788650'),(3,'355637052238805'),(4,'355637053986139'),(5,'355637051954873');
 
+/*Table structure for table `losephonecount` */
+
+DROP TABLE IF EXISTS `losephonecount`;
+
+CREATE TABLE `losephonecount` (
+  `countNum` int(11) unsigned default NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+
+/*Data for the table `losephonecount` */
+
+insert  into `losephonecount`(`countNum`) values (4);
+
 /*Table structure for table `manager` */
 
 DROP TABLE IF EXISTS `manager`;
@@ -205,7 +218,7 @@ CREATE TABLE `manager` (
 
 /*Data for the table `manager` */
 
-insert  into `manager`(`manager_id`,`manager_nickname`,`manager_username`,`manager_password`,`manager_email`,`manager_status`,`manager_code`) values (1,'梦伴如初','mengban','wushang816','1576776108@qq.com',1,'QQQQ'),(6,'测试...','test','wushang816','2662252562@qq.com',1,'F4HP'),(10,'默认','32131221','1212312','2662252561@qq.com',2,'8VNY');
+insert  into `manager`(`manager_id`,`manager_nickname`,`manager_username`,`manager_password`,`manager_email`,`manager_status`,`manager_code`) values (1,'梦伴如初','mengban','wushang816','1576776108@qq.com',1,'QQQQ'),(2,'test1','test1','test123','2662252562@qq.com',1,'F4HP'),(3,'test2','test2','test123','2662252222@qq.com',1,'8VNY'),(4,'test3','test3','test123','26621231312@qq.com',2,'OUYX'),(5,'test4','test4','test123','2662252561@qq.com',1,'JXMF'),(6,'admin','admin123','admin123','mengban1110@gmail.com',1,'SFA1');
 
 /*Table structure for table `mpinfo` */
 
@@ -239,7 +252,7 @@ CREATE TABLE `mpinfo` (
 
 /*Data for the table `mpinfo` */
 
-insert  into `mpinfo`(`MpInfo_id`,`MpInfo_title`,`MpInfo_brand`,`MpInfo_version`,`MpInfo_ram`,`MpInfo_color`,`MpInfo_condition`,`MpInfo_price`,`MpInfo_buyTime`,`MpInfo_MIME`,`MpInfo_status`,`MpInfo_photo`) values (1,NULL,1,'IphoneX',4,6,2,'2500.00','2019年7月','355637051875045',1,NULL),(2,NULL,2,'Mate30Pro5G',6,4,3,'3800.00','2019年12月','355637052788650',1,NULL),(3,NULL,3,'小米10Pro',5,5,1,'4700.00','2020年3月','355637057190372',1,NULL),(4,NULL,4,'S10Edge',4,2,4,'1200.00','2017年7月','323437051178650',1,NULL),(5,NULL,5,'魅族17pro',6,8,3,'3900.00','2020年5月','355637231635045',1,NULL),(6,NULL,6,'Reno5',5,1,7,'4300.00','2018年10月','355637021980372',1,NULL),(7,NULL,7,'坚果pro3',4,7,2,'4400.00','2019年1月','359349569392215',1,NULL),(8,NULL,7,'VIVOx60',5,3,1,'5999.00','2020年12月','395489734958231',1,NULL);
+insert  into `mpinfo`(`MpInfo_id`,`MpInfo_title`,`MpInfo_brand`,`MpInfo_version`,`MpInfo_ram`,`MpInfo_color`,`MpInfo_condition`,`MpInfo_price`,`MpInfo_buyTime`,`MpInfo_MIME`,`MpInfo_status`,`MpInfo_photo`) values (1,'九五新-银色-苹果-IphoneX-64GB',1,'IphoneX',4,6,2,'2500.00','2019年7月','355637051875045',2,NULL),(2,'九成新-紫色-华为-Mate30Pro5G-256GB',2,'Mate30Pro5G',6,4,3,'3800.00','2019年12月','355637052788650',1,NULL),(3,'九九新-黑色-小米-小米10Pro-128GB',3,'小米10Pro',5,5,1,'4700.00','2020年3月','355637057190372',1,NULL),(4,'八五新-绿色-三星-S10Edge-64GB',4,'S10Edge',4,2,4,'1200.00','2017年7月','323437051178650',2,NULL),(5,'九成新-橙色-魅族-魅族17pro-256GB',5,'魅族17pro',6,8,3,'3900.00','2020年5月','355637231635045',1,NULL),(6,'九九新-红色-OPPO-Reno5-128GB',6,'Reno5',5,1,7,'4300.00','2018年10月','355637021980372',1,NULL),(7,'九五新-黄色-锤子-坚果pro3-64GB',7,'坚果pro3',4,7,2,'4400.00','2019年1月','359349569392215',1,NULL),(8,'九九新-蓝色-VIVO-VIVOx60-128GB',8,'VIVOx60',5,3,1,'5999.00','2020年12月','395489734958231',2,NULL),(9,'九五新-红色-苹果-Iphone11-128GB',1,'Iphone11',5,1,2,'4231.00','2020年11月','323437515418650',1,NULL),(10,'七成新-银色-苹果-Iphone8-32GB',1,'Iphone8',3,6,7,'1900.00','2017年12月','515143242611333',1,NULL),(11,'六成新-黑色-小米-小米10Pro-256GB',3,'小米9',6,5,8,'1200.00','2018年2月','241794172492142',2,NULL),(12,'八成新-黄色-OPPO-Reno2-64GB',6,'Reno2',4,7,5,'1799.00','2016年9月','489120891401241',1,''),(13,'九五新-紫色-华为-P40Pro5G-256GB',2,'P40Pro5G',6,4,2,'5999.00','2020年11月','451563734724521',1,NULL),(14,'六成新-绿色-三星-S7edge-32GB',4,'S7edge',3,2,8,'2677.00','2015年8月','151798734214221',1,NULL),(15,'八五新-红色-OPPO-Reno3-16GB',6,'Reno3',2,1,4,'2399.00','2017年8月','524351416541231',1,NULL),(16,'九五新-黄色-锤子-坚果pro2-64GB',7,'坚果pro2',4,7,2,'4400.00','2019年1月','359349569392215',1,NULL),(17,'六成新-橙色-VIVO-VIVOx50-256GB',8,'VIVOx50',1,8,8,'999.00','2015年12月','124516423115415',2,NULL),(18,'八五新-银色-OnePlus-一加z-128GB',9,'一加z',5,6,4,'5132.00','2019年11月','151452362351412',1,NULL);
 
 /*Table structure for table `notice` */
 
