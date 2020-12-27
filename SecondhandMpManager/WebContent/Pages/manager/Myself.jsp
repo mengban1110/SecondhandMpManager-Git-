@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,14 +32,13 @@
 				position:absolute;
 			}
 		</style>
-
 	</head>
 
 	<body class="grey lighten-3">
-
 		<!--Main Navigation-->
-		<header>
 
+		<!-- 顶部顶部顶部 -->
+		<header>
 			<!-- Navbar -->
 			<nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
 				<div class="container-fluid">
@@ -58,25 +59,25 @@
 
 						<!-- Left -->
 						<ul class="navbar-nav mr-auto">
-							<li class="nav-item">
-								<a class="nav-link waves-effect" href="Dashboard.html">数据统计
+							<li class="nav-item active">
+								<a class="nav-link waves-effect" href="<%=request.getContextPath()%>/Pages/manager/Dashboard.jsp">数据统计
 									<span class="sr-only">(current)</span>
 								</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link waves-effect" href="Tables.html">商品信息</a>
+								<a class="nav-link waves-effect" href="<%=request.getContextPath()%>/manager/mpinfo.do?method=queryAll">商品信息</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link waves-effect" href="AddTables.html">添加商品</a>
+								<a class="nav-link waves-effect" href="<%=request.getContextPath()%>/Pages/manager/AddTables.jsp">添加商品</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link waves-effect" href="Orders.html">订单处理</a>
+								<a class="nav-link waves-effect" href="<%=request.getContextPath()%>/Pages/manager/Orders.jsp">订单处理</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link waves-effect" href="<%=request.getContextPath()%>/Pages/manager/BugSender.jsp">问题反馈</a>
 							</li>
 							<li class="nav-item active">
-								<a class="nav-link waves-effect" href="BugSender.html">问题反馈</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link waves-effect" href="Myself.html">个人中心</a>
+								<a class="nav-link waves-effect" href="<%=request.getContextPath()%>/Pages/manager/Myself.jsp">个人中心</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link waves-effect" href="#">退出登录</a>
@@ -100,43 +101,39 @@
 									<i class="fab fa-github mr-2"></i>DoO WebSite
 								</a>
 							</li>
-
 						</ul>
 
 					</div>
 
 				</div>
 			</nav>
-			<!-- Navbar -->
-
-
-
+			<!-- 顶部顶部顶部 -->
 
 
 			<!-- 左侧导航链接 -->
 			<div class="sidebar-fixed position-fixed">
 
 				<a class="logo-wrapper waves-effect" style="right: 3.125rem;">
-					<img src="../resource/background/manager/img/DreamofOriginal.jpg">
+					<img src="<%=request.getContextPath()%>/Pages/resource/background/manager/img/DreamofOriginal.jpg">
 				</a>
 
 				<div class="list-group list-group-flush">
-					<a href="Dashboard.html" class="list-group-item list-group-item-action waves-effect">
+					<a href="<%=request.getContextPath()%>/Pages/manager/Dashboard.jsp" class="list-group-item list-group-item-action waves-effect">
 						<i class="fas fa-chart-pie mr-3"></i>数据统计
 					</a>
-					<a href="Tables.html" class="list-group-item list-group-item-action waves-effect">
+					<a href="<%=request.getContextPath()%>/manager/mpinfo.do?method=queryAll" class="list-group-item list-group-item-action waves-effect">
 						<i class="fas fa-table mr-3"></i>商品信息
 					</a>
-					<a href="AddTables.html" class="list-group-item list-group-item-action waves-effect">
+					<a href="<%=request.getContextPath()%>/Pages/manager/AddTables.jsp" class="list-group-item list-group-item-action waves-effect">
 						<i class="fas fa-map mr-3"></i>添加商品
 					</a>
-					<a href="Orders.html" class="list-group-item list-group-item-action waves-effect">
+					<a href="<%=request.getContextPath()%>/Pages/manager/Orders.jsp" class="list-group-item list-group-item-action waves-effect">
 						<i class="fas fa-money-bill-alt mr-3"></i>订单处理
 					</a>
-					<a href="BugSender.html" class="list-group-item list-group-item-action waves-effect active">
+					<a href="<%=request.getContextPath()%>/Pages/manager/BugSender.jsp" class="list-group-item list-group-item-action waves-effect">
 						<i class="fas fa-check mr-3"></i>问题反馈
 					</a>
-					<a href="Myself.html" class="list-group-item list-group-item-action waves-effect">
+					<a href="<%=request.getContextPath()%>/Pages/manager/Myself.jsp" class="list-group-item list-group-item-action waves-effect active">
 						<i class="fas fa-user mr-3"></i>个人中心
 					</a>
 					<a href="#" class="list-group-item list-group-item-action waves-effect">
@@ -145,14 +142,18 @@
 				</div>
 
 			</div>
+			<!-- 左侧导航链接 -->
 
 		</header>
 
 
 
-
 		<!-- 首页图 -->
 		<main class="pt-5 mx-lg-5">
+			<!-- 顶部空格 -->
+			<div class="container-fluid mt-5">
+			</div>
+
 
 		</main>
 		<!--Main layout-->

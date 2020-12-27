@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,10 +12,10 @@
 		<!-- 字体 CSS -->
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
 		<!-- Bootstrap CSS -->
-		<link href="../resource/background/manager/css/bootstrap.min.css" rel="stylesheet">
+		<link href="<%=request.getContextPath()%>/Pages/resource/background/manager/css/bootstrap.min.css" rel="stylesheet">
 		<!-- 模板自定义 CSS -->
-		<link href="../resource/background/manager/css/mdb.min.css" rel="stylesheet">
-		<link href="../resource/background/manager/css/style.min.css" rel="stylesheet">
+		<link href="<%=request.getContextPath()%>/Pages/resource/background/manager/css/mdb.min.css" rel="stylesheet">
+		<link href="<%=request.getContextPath()%>/Pages/resource/background/manager/css/style.min.css" rel="stylesheet">
 
 		<style>
 			.map-container{
@@ -58,24 +60,24 @@
 						<!-- Left -->
 						<ul class="navbar-nav mr-auto">
 							<li class="nav-item active">
-								<a class="nav-link waves-effect" href="Dashboard.html">数据统计
+								<a class="nav-link waves-effect" href="Dashboard.jsp">数据统计
 									<span class="sr-only">(current)</span>
 								</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link waves-effect" href="Tables.html">商品信息</a>
+								<a class="nav-link waves-effect" href="<%=request.getContextPath()%>/Pages/manager/Dashboard.jsp">商品信息</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link waves-effect" href="AddTables.html">添加商品</a>
+								<a class="nav-link waves-effect" href="<%=request.getContextPath()%>/manager/mpinfo.do?method=queryAll">添加商品</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link waves-effect" href="Orders.html">订单处理</a>
+								<a class="nav-link waves-effect" href="<%=request.getContextPath()%>/Pages/manager/Orders.jsp">订单处理</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link waves-effect" href="BugSender.html">问题反馈</a>
+								<a class="nav-link waves-effect" href="<%=request.getContextPath()%>/Pages/manager/BugSender.jsp">问题反馈</a>
 							</li>
-							<li class="nav-item active">
-								<a class="nav-link waves-effect" href="Myself.html">个人中心</a>
+							<li class="nav-item">
+								<a class="nav-link waves-effect" href="<%=request.getContextPath()%>/Pages/manager/Myself.jsp">个人中心</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link waves-effect" href="#">退出登录</a>
@@ -112,26 +114,26 @@
 			<div class="sidebar-fixed position-fixed">
 
 				<a class="logo-wrapper waves-effect" style="right: 3.125rem;">
-					<img src="../resource/background/manager/img/DreamofOriginal.jpg">
+					<img src="<%=request.getContextPath()%>/Pages/resource/background/manager/img/DreamofOriginal.jpg">
 				</a>
 
 				<div class="list-group list-group-flush">
-					<a href="Dashboard.html" class="list-group-item list-group-item-action waves-effect">
+					<a href="<%=request.getContextPath()%>/Pages/manager/Dashboard.jsp" class="list-group-item waves-effect active">
 						<i class="fas fa-chart-pie mr-3"></i>数据统计
 					</a>
-					<a href="Tables.html" class="list-group-item list-group-item-action waves-effect">
+					<a href="<%=request.getContextPath()%>/manager/mpinfo.do?method=queryAll" class="list-group-item list-group-item-action waves-effect">
 						<i class="fas fa-table mr-3"></i>商品信息
 					</a>
-					<a href="AddTables.html" class="list-group-item list-group-item-action waves-effect">
+					<a href="<%=request.getContextPath()%>/Pages/manager/AddTables.jsp" class="list-group-item list-group-item-action waves-effect">
 						<i class="fas fa-map mr-3"></i>添加商品
 					</a>
-					<a href="Orders.html" class="list-group-item list-group-item-action waves-effect">
+					<a href="<%=request.getContextPath()%>/Pages/manager/Orders.jsp" class="list-group-item list-group-item-action waves-effect">
 						<i class="fas fa-money-bill-alt mr-3"></i>订单处理
 					</a>
-					<a href="BugSender.html" class="list-group-item list-group-item-action waves-effect">
+					<a href="<%=request.getContextPath()%>/Pages/manager/BugSender.jsp" class="list-group-item list-group-item-action waves-effect">
 						<i class="fas fa-check mr-3"></i>问题反馈
 					</a>
-					<a href="Myself.html" class="list-group-item list-group-item-action waves-effect active">
+					<a href="<%=request.getContextPath()%>/Pages/manager/Myself.jsp" class="list-group-item list-group-item-action waves-effect">
 						<i class="fas fa-user mr-3"></i>个人中心
 					</a>
 					<a href="#" class="list-group-item list-group-item-action waves-effect">
@@ -180,7 +182,7 @@
 							<!-- 信息消息框 -->
 							<div class="list-group list-group-flush">
 								<a class="list-group-item list-group-item-action waves-effect">注册用户
-									<span class="badge badge-danger badge-pill pull-right">124
+									<span class="badge badge-danger badge-pill pull-right" id="accountCount">124
 									</span>
 								</a>
 								<a class="list-group-item list-group-item-action waves-effect">脏机拦截
@@ -250,18 +252,18 @@
 								<tbody>
 									<tr>
 										<th scope="row">1</th>
-										<td>Cell 1</td>
-										<td>Cell 2</td>
+										<td>华为</td>
+										<td>7</td>
 									</tr>
 									<tr>
 										<th scope="row">2</th>
-										<td>Cell 4</td>
-										<td>Cell 5</td>
+										<td>苹果</td>
+										<td>4</td>
 									</tr>
 									<tr>
 										<th scope="row">3</th>
-										<td>Cell 7</td>
-										<td>Cell 8</td>
+										<td>三星</td>
+										<td>3</td>
 									</tr>
 								</tbody>
 							</table>
@@ -280,13 +282,13 @@
 
 
 		<!-- JQuery -->
-		<script type="text/javascript" src="../resource/background/manager/js/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="<%=request.getContextPath()%>/Pages/resource/background/manager/js/jquery-3.4.1.min.js"></script>
 		<!-- Bootstrap 提醒工具类 -->
-		<script type="text/javascript" src="../resource/background/manager/js/popper.min.js"></script>
+		<script type="text/javascript" src="<%=request.getContextPath()%>/Pages/resource/background/manager/js/popper.min.js"></script>
 		<!-- Bootstrap core JavaScript -->
-		<script type="text/javascript" src="../resource/background/manager/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="<%=request.getContextPath()%>/Pages/resource/background/manager/js/bootstrap.min.js"></script>
 		<!-- MDB core JavaScript -->
-		<script type="text/javascript" src="../resource/background/manager/js/mdb.min.js"></script>
+		<script type="text/javascript" src="<%=request.getContextPath()%>/Pages/resource/background/manager/js/mdb.min.js"></script>
 		<!-- Initializations -->
 		<script type="text/javascript">
 			// Animations initialization

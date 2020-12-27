@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,24 +64,24 @@
 						<!-- Left -->
 						<ul class="navbar-nav mr-auto">
 							<li class="nav-item">
-								<a class="nav-link waves-effect" href="Dashboard.html">数据统计
+								<a class="nav-link waves-effect" href="<%=request.getContextPath()%>/Pages/manager/Dashboard.jsp">数据统计
 									<span class="sr-only">(current)</span>
 								</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link waves-effect" href="Tables.html">商品信息</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link waves-effect" href="AddTables.html">添加商品</a>
+								<a class="nav-link waves-effect" href="<%=request.getContextPath()%>/manager/mpinfo.do?method=queryAll">商品信息</a>
 							</li>
 							<li class="nav-item active">
-								<a class="nav-link waves-effect" href="Orders.html">订单处理</a>
+								<a class="nav-link waves-effect" href="<%=request.getContextPath()%>/Pages/manager/AddTables.jsp">添加商品</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link waves-effect" href="BugSender.html">问题反馈</a>
+								<a class="nav-link waves-effect" href="<%=request.getContextPath()%>/Pages/manager/Orders.jsp">订单处理</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link waves-effect" href="Myself.html">个人中心</a>
+								<a class="nav-link waves-effect" href="<%=request.getContextPath()%>/Pages/manager/BugSender.jsp">问题反馈</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link waves-effect" href="<%=request.getContextPath()%>/Pages/manager/Myself.jsp">个人中心</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link waves-effect" href="#">退出登录</a>
@@ -123,22 +125,22 @@
 				</a>
 
 				<div class="list-group list-group-flush">
-					<a href="Dashboard.html" class="list-group-item waves-effect list-group-item-action">
+					<a href="<%=request.getContextPath()%>/Pages/manager/Dashboard.jsp" class="list-group-item waves-effect list-group-item-action">
 						<i class="fas fa-chart-pie mr-3"></i>数据统计
 					</a>
-					<a href="Tables.html" class="list-group-item list-group-item-action waves-effect">
+					<a href="<%=request.getContextPath()%>/manager/mpinfo.do?method=queryAll" class="list-group-item list-group-item-action waves-effect">
 						<i class="fas fa-table mr-3"></i>商品信息
 					</a>
-					<a href="AddTables.html" class="list-group-item list-group-item-action waves-effect">
+					<a href="<%=request.getContextPath()%>/Pages/manager/AddTables.jsp" class="list-group-item list-group-item-action waves-effect active">
 						<i class="fas fa-map mr-3"></i>添加商品
 					</a>
-					<a href="Orders.html" class="list-group-item list-group-item-action waves-effect active">
+					<a href="<%=request.getContextPath()%>/Pages/manager/Orders.jsp" class="list-group-item list-group-item-action waves-effect">
 						<i class="fas fa-money-bill-alt mr-3"></i>订单处理
 					</a>
-					<a href="BugSender.html" class="list-group-item list-group-item-action waves-effect">
+					<a href="<%=request.getContextPath()%>/Pages/manager/BugSender.jsp" class="list-group-item list-group-item-action waves-effect">
 						<i class="fas fa-check mr-3"></i>问题反馈
 					</a>
-					<a href="Myself.html" class="list-group-item list-group-item-action waves-effect">
+					<a href="<%=request.getContextPath()%>/Pages/manager/Myself.jsp" class="list-group-item list-group-item-action waves-effect">
 						<i class="fas fa-user mr-3"></i>个人中心
 					</a>
 					<a href="#" class="list-group-item list-group-item-action waves-effect">
@@ -182,6 +184,86 @@
 			new WOW().init();
 		</script>
 
+		<!-- Charts -->
+		<script>
+			// Line
+			var ctx = document.getElementById("myChart").getContext('2d');
+			var myChart = new Chart(ctx, {
+				type: 'bar',
+				data: {
+					labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+					datasets: [{
+						label: '# of Votes',
+						data: [12, 19, 3, 5, 2, 3],
+						backgroundColor: [
+							'rgba(255, 99, 132, 0.2)',
+							'rgba(54, 162, 235, 0.2)',
+							'rgba(255, 206, 86, 0.2)',
+							'rgba(75, 192, 192, 0.2)',
+							'rgba(153, 102, 255, 0.2)',
+							'rgba(255, 159, 64, 0.2)'
+						],
+						borderColor: [
+							'rgba(255,99,132,1)',
+							'rgba(54, 162, 235, 1)',
+							'rgba(255, 206, 86, 1)',
+							'rgba(75, 192, 192, 1)',
+							'rgba(153, 102, 255, 1)',
+							'rgba(255, 159, 64, 1)'
+						],
+						borderWidth: 1
+					}]
+				},
+				options: {
+					scales: {
+						yAxes: [{
+							ticks: {
+								beginAtZero: true
+							}
+						}]
+					}
+				}
+			});
+
+			//pie
+			var ctxP = document.getElementById("pieChart").getContext('2d');
+			var myPieChart = new Chart(ctxP, {
+				type: 'pie',
+				data: {
+					labels: ["Red", "Green", "Yellow", "Grey", "Dark Grey"],
+					datasets: [{
+						data: [300, 50, 100, 40, 120],
+						backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
+						hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
+					}]
+				},
+				options: {
+					responsive: true,
+					legend: false
+				}
+			});
+
+
+
+
+
+			//doughnut
+			var ctxD = document.getElementById("doughnutChart").getContext('2d');
+			var myLineChart = new Chart(ctxD, {
+				type: 'doughnut',
+				data: {
+					labels: ["Red", "Green", "Yellow", "Grey", "Dark Grey"],
+					datasets: [{
+						data: [300, 50, 100, 40, 120],
+						backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
+						hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
+					}]
+				},
+				options: {
+					responsive: true
+				}
+			});
+		</script>
 
 
 	</body>
